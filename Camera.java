@@ -35,7 +35,7 @@ public class Camera extends Actor {
         this.maxX = TileEngine.MAP_WIDTH * TileEngine.TILE_WIDTH - this.width;
         this.maxY = TileEngine.MAP_HEIGHT * TileEngine.TILE_HEIGHT - this.height;
         this.tileEngine = tileEngine;
-        this.cameraDrag = 0.9;
+        this.cameraDrag = 1.4;
         this.setImage(new GreenfootImage(1, 1));
     }
 

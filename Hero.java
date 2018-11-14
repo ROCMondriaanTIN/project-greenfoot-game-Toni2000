@@ -7,16 +7,14 @@ import greenfoot.*;
  */
 public class Hero extends Mover {
 
-    private final double gravity;
     private final double acc;
     private final double drag;
 
     public Hero() {
         super();
-        gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-        setImage("p1.png");
+        setImage("p12.png");
     }
 
     @Override
@@ -24,10 +22,7 @@ public class Hero extends Mover {
         handleInput();
         
         velocityX *= drag;
-        velocityY += acc;
-        if (velocityY > gravity) {
-            velocityY = gravity;
-        }
+        velocityY *= drag;
         applyVelocity();
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
@@ -39,17 +34,19 @@ public class Hero extends Mover {
     }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("w")) {
-            velocityY = -20;
-        }
-
         if (Greenfoot.isKeyDown("a")) {
-            velocityX = -2;
-        } else if (Greenfoot.isKeyDown("d")) {
-            velocityX = 2;
+            velocityX = -8;
+        } 
+        else if (Greenfoot.isKeyDown("d")) {
+            velocityX = 8;
+        }
+        else if (Greenfoot.isKeyDown("w")) {
+            velocityY = 8;
+        }
+        else if (Greenfoot.isKeyDown("a")) {
+            velocityY = -8;
         }
     }
-
     public int getWidth() {
         return getImage().getWidth();
     }
