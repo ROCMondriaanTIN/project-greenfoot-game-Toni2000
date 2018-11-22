@@ -13,8 +13,12 @@ public class Hero extends Mover {
     public Hero() {
         super();
         acc = 0.6;
-        drag = 0.8;
-        setImage("p12.png");
+        drag = 0.4;
+        setImage("p1.png");
+        GreenfootImage myImage = getImage();
+        int myNewHeight = (int)myImage.getHeight()*2/4;
+        int myNewWidth = (int)myImage.getWidth()*2/4;
+        myImage.scale(myNewWidth,myNewHeight);
     }
 
     @Override
@@ -31,20 +35,26 @@ public class Hero extends Mover {
                 break;
             }
         }
+        for (Actor Letters : getIntersectingObjects(Letters.class)) {
+            if (Letters != null) {
+                getWorld().removeObject(Letters);
+                break;
+            }
+        }
     }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("a")) {
-            velocityX = -8;
+        if (Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")) {
+            velocityX = -14;
         } 
-        else if (Greenfoot.isKeyDown("d")) {
-            velocityX = 8;
+        else if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
+            velocityX = 14;
         }
-        else if (Greenfoot.isKeyDown("w")) {
-            velocityY = 8;
+        else if (Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("up")) {
+            velocityY = -14;
         }
-        else if (Greenfoot.isKeyDown("a")) {
-            velocityY = -8;
+        else if (Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("down")) {
+            velocityY = 14;
         }
     }
     public int getWidth() {
