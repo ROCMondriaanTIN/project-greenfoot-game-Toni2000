@@ -1,5 +1,4 @@
 
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -50,18 +49,18 @@ public class MyWorld extends World {
         // Declareren en initialiseren van een main karakter van het spel mijne heet Hero. Deze klasse 
         // moet de klasse Mover extenden voor de camera om te werken
         Hero hero = new Hero();
-        Letters letter1 = new Letters();
-
+        Star star = new Star();
         // Laat de camera een object volgen. Die moet een Mover instatie zijn of een extentie hiervan.
         camera.follow(hero);
-
+        
         // Alle objecten toevoegen aan de wereld: camera, main karakter en mogelijke enemies
         addObject(camera, 0, 0);
         addObject(hero, 30, 105);
-        //addObject(letter1,385,385);
-        //addObject(letter2,665,1155);
-        //addObject(letter3,1085,245);
-        //addObject(letter4,1925,945);
+        addObject(new Letters('J'),385,385);
+        addObject(new Letters('U'),665,1155);
+        addObject(new Letters('M'),1085,245);
+        addObject(new Letters('P'),1925,945);
+        addObject(star, 245, 660);
         //addObject(new Enemy(), 1170, 410);
         
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.

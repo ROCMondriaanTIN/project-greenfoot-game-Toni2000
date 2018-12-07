@@ -9,6 +9,7 @@ public class Hero extends Mover {
 
     private final double acc;
     private final double drag;
+    int snelheid = 10;
 
     public Hero() {
         super();
@@ -24,37 +25,37 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
-        
         velocityX *= drag;
         velocityY *= drag;
         applyVelocity();
-
+        
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
                 getWorld().removeObject(this);
                 break;
             }
         }
-        for (Actor Letters : getIntersectingObjects(Letters.class)) {
-            if (Letters != null) {
-                getWorld().removeObject(Letters);
+        for (Actor Star : getIntersectingObjects(Star.class)) {
+            if (Star != null) {
+                snelheid+=10;
+                getWorld().removeObject(Star);
                 break;
             }
         }
     }
-
+    
     public void handleInput() {
         if (Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")) {
-            velocityX = -14;
+            velocityX = -snelheid;
         } 
         else if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
-            velocityX = 14;
+            velocityX = snelheid;
         }
         else if (Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("up")) {
-            velocityY = -14;
+            velocityY = -snelheid;
         }
         else if (Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("down")) {
-            velocityY = 14;
+            velocityY = snelheid;
         }
     }
     public int getWidth() {
